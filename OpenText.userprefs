@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="OpenText/Program.cs">
+    <Files>
+      <File FileName="OpenText/StringTexture.cs" Line="236" Column="1" />
+      <File FileName="OpenText/TestGameWindow.cs" Line="30" Column="4" />
+      <File FileName="OpenText/Program.cs" Line="90" Column="16" />
+      <File FileName="OpenText/packages.config" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
