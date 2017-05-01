@@ -39,6 +39,7 @@
     <Compile Include="StringTexture.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TestGameWindow.cs" />
+    <Compile Include="StringTextureBuilder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -18,17 +18,12 @@ namespace OpenText
     {
 
 		public bool resize = false;
-		private PrivateFontCollection pfc;
-		private FontFamily[] families;
 
-
+		public StringTextureBuilder stb = new StringTextureBuilder();
 		public TestMode Mode;
-		public void LoadFonts(){
-			pfc = new PrivateFontCollection ();
-			pfc.AddFontFile ("Fonts/Anonymous Pro.ttf");
-			families = pfc.Families;
-
-
+		public void LoadFonts()
+		{
+			stb.AddFont("Fonts/Anonymous Pro.ttf");
 		}
 		public TestGameWindow() : base(){
 			this.LoadFonts();

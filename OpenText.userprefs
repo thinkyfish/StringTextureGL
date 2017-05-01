@@ -1,12 +1,14 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="OpenText/Program.cs">
+﻿<Properties StartupConfiguration="{2E76B59D-6B23-41BB-A926-A1C3939B1182}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../MasterBlaster/MasterBlaster/MasterBlaster/MBGameWindow.cs">
     <Files>
-      <File FileName="OpenText/StringTexture.cs" Line="236" Column="1" />
-      <File FileName="OpenText/TestGameWindow.cs" Line="30" Column="4" />
+      <File FileName="OpenText/StringTexture.cs" Line="193" Column="4" />
+      <File FileName="OpenText/StringTextureBuilder.cs" Line="25" Column="4" />
+      <File FileName="OpenText/TestGameWindow.cs" Line="18" Column="6" />
       <File FileName="OpenText/Program.cs" Line="90" Column="16" />
-      <File FileName="OpenText/packages.config" Line="1" Column="1" />
+      <File FileName="../MasterBlaster/MasterBlaster/MasterBlaster/MBGameWindow.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.OpenText PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
