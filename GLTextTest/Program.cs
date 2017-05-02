@@ -22,30 +22,11 @@ namespace GLTextTest
 			{
 				game.Load += (sender, e) =>
 				{
-					// setup settings, load textures, sounds
 					game.Mode = TestMode.Menu;
 					game.VSync = VSyncMode.On;
-
 				};
 
-				game.Resize += (sender, e) =>
-				{
 
-
-					if (game.Height < 600)
-						game.Height = 600;
-					if (game.Width < 600)
-						game.Width = 600;
-				};
-				game.KeyDown += (sender, e) =>
-				{
-					switch (e.Key)
-					{
-						default:
-							break;
-					}
-
-				};
 				game.KeyUp += (sender, e) =>
 				{
 					switch (e.Key)
@@ -75,7 +56,6 @@ namespace GLTextTest
 
 				game.RenderFrame += (sender, e) =>
 				{
-
 					if (game.Height < 600)
 						game.Height = 600;
 					if (game.Width < 600)
@@ -88,12 +68,9 @@ namespace GLTextTest
 					GL.LoadIdentity();
 					GL.Viewport(0, 0, game.Width, game.Height);
 					GL.Ortho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
-					GL.Disable(EnableCap.DepthTest);
 
-
-					GL.Disable(EnableCap.Blend);
 					game.DrawText(20, 50);
-					//game.TestDraw();
+
 					game.SwapBuffers();
 				};
 				game.Width = 600;

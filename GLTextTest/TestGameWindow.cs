@@ -25,25 +25,13 @@ namespace GLTextTest
 		public Font anonymous_font;
 		public Brush white_brush = new SolidBrush(Color.White);
 
-		public void LoadFonts()
-		{
-			anonymous_font = stb.GetFont("Fonts/Anonymous Pro.ttf", 20);
 
-		}
 		public TestGameWindow() : base()
 		{
-			this.LoadFonts();
+			anonymous_font = stb.GetFont("Fonts/Anonymous Pro.ttf", 20);
 			teststring = stb.makeString("Test", white_brush, anonymous_font, Color.DarkGreen);
 		}
-		public void TestDraw()
-		{
-			GL.Begin(PrimitiveType.Quads);
-			GL.Vertex2(0, 0);
-			GL.Vertex2(1.0f, 0);
-			GL.Vertex2(1, -1);
-			GL.Vertex2(0, -1);
-			GL.End();
-		}
+
 		public void DrawText(int x, int y, float Depth = 1.0f)
 		{
 
