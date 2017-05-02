@@ -42,7 +42,14 @@ namespace StringTextureGL
 		{
 			return this.textureId;
 		}
-
+		public Size Size()
+		{
+			return size.ToSize();
+		}
+		public SizeF SizeF()
+		{
+			return size;
+		}
 		public void DrawStringToTexture()
 		{
 			using (Graphics gfx = Graphics.FromImage(TextBitmap))

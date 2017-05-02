@@ -1,20 +1,20 @@
 ﻿<Properties StartupConfiguration="{0FC18063-85A1-490F-9775-D2814A888993}|Default">
   <MonoDevelop.Ide.ItemProperties.GLTextTest PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GLTextTest/TestGameWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="StringTextureGL/StringTexture.cs">
     <Files>
       <File FileName="GLTextTest/Program.cs" Line="2" Column="25" />
       <File FileName="GLTextTest/TestGameWindow.cs" Line="3" Column="1" />
-      <File FileName="StringTextureGL/StringTexture.cs" Line="12" Column="26" />
+      <File FileName="StringTextureGL/StringTexture.cs" Line="48" Column="4" />
       <File FileName="StringTextureGL/StringTextureBuilder.cs" Line="2" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StringTextureGL" expanded="True">
-            <Node name="GLTextTest" expanded="True">
-              <Node name="TestGameWindow.cs" selected="True" />
+            <Node name="GLTextTest" expanded="True" />
+            <Node name="StringTextureGL" expanded="True">
+              <Node name="StringTexture.cs" selected="True" />
             </Node>
-            <Node name="StringTextureGL" expanded="True" />
           </Node>
         </State>
       </Pad>
