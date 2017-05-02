@@ -187,12 +187,14 @@ namespace OpenText
 		public SizeF size;
 		private Font font;
 		private Brush brush;
-		public StringTexture(string text, Brush brush, Font font, SizeF size)
+		private Color background;
+		public StringTexture(string text, Brush brush, Font font, SizeF size, Color background)
 		{
 			this.text = text;
 			this.brush = brush;
 			this.font = font;
 			this.size = size;
+			this.background = background;
 			Size pixelsize = size.ToSize();
 			this.TextBitmap = new Bitmap(pixelsize.Width, pixelsize.Height);
 			this.CreateTexture();
@@ -204,6 +206,10 @@ namespace OpenText
 				GL.DeleteTexture(textureId);
 		}
 
+		public int TextureId()
+		{
+			return this.textureId;
+		}
 
 		public void DrawStringToTexture()
 		{
@@ -226,10 +232,6 @@ namespace OpenText
 			GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, TextBitmap.Width, TextBitmap.Height, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
 			TextBitmap.UnlockBits(data);
 
-		}
-		public int GetTextureId()
-		{
-			return textureId;
 		}
 
 		private void CreateTexture()

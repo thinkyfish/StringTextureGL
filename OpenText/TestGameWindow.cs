@@ -23,19 +23,18 @@ namespace OpenText
 		public StringTextureBuilder stb = new StringTextureBuilder();
 		public TestMode Mode;
 		public StringTexture teststring;
-		public int anonymous_font = 0;
+		public Font anonymous_font;
 		public Brush white_brush = new SolidBrush(Color.White);
 
 		public void LoadFonts()
 		{
-			anonymous_font = stb.AddFont("Fonts/Anonymous Pro.ttf", 20);
+			anonymous_font = stb.GetFont("Fonts/Anonymous Pro.ttf", 20);
 
 		}
 		public TestGameWindow() : base()
 		{
 			this.LoadFonts();
 			teststring = stb.makeString("Test", white_brush, anonymous_font);
-			teststring.TextBitmap.Save("out.bmp");
 		}
 		public void TestDraw()
 		{
@@ -46,40 +45,31 @@ namespace OpenText
 			GL.Vertex2(0, -1);
 			GL.End();
 		}
-		public void DrawText()
+		public void DrawText(int x, int y, float Depth = 1.0f)
 		{
-			float Depth = 1.0f;
+
 			GL.PushMatrix();
 			GL.LoadIdentity();
 
 			Matrix4 ortho_projection = Matrix4.CreateOrthographicOffCenter(0, this.Width, this.Height, 0, -1, 1);
 			GL.MatrixMode(MatrixMode.Projection);
-			//GL.PushMatrix();//
+
 			GL.LoadMatrix(ref ortho_projection);
-			//GL.Disable(EnableCap.DepthTest);
-			//GL.Enable(EnableCap.Blend);
-			//GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+
 			GL.Enable(EnableCap.Texture2D);
-			GL.BindTexture(TextureTarget.Texture2D, teststring.GetTextureId());
-			//GL.Enable(EnableCap.DepthTest);
-			//GL.Clear(ClearBufferMask.DepthBufferBit);
+			GL.BindTexture(TextureTarget.Texture2D, teststring.TextureId());
+
 			GL.Begin(BeginMode.Quads);
-			GL.TexCoord2(0, 0); GL.Vertex3(0, 0, Depth);
-			GL.TexCoord2(1, 0); GL.Vertex3(teststring.size.Width, 0, Depth);
-			GL.TexCoord2(1, 1); GL.Vertex3(teststring.size.Width, teststring.size.Height, Depth);
-			GL.TexCoord2(0, 1); GL.Vertex3(0, teststring.size.Height, Depth);
-			//GL.Disable(EnableCap.DepthTest);
+			GL.TexCoord2(0, 0); GL.Vertex3(x + 0, y + 0, Depth);
+			GL.TexCoord2(1, 0); GL.Vertex3(x + teststring.size.Width, y + 0, Depth);
+			GL.TexCoord2(1, 1); GL.Vertex3(x + teststring.size.Width, y + teststring.size.Height, Depth);
+			GL.TexCoord2(0, 1); GL.Vertex3(x + 0, y + teststring.size.Height, Depth);
+
 			GL.End();
-			//GL.ClearDepth(1.0f);
-			//GL.ClearDepth(0.5f);
-			//GL.Clear(ClearBufferMask.DepthBufferBit);
+			GL.Disable(EnableCap.Texture2D);
 			GL.PopMatrix();
 
-			//GL.Disable(EnableCap.Blend);
-			GL.Disable(EnableCap.Texture2D);
-			//GL.Disable (EnableCap.DepthTest);
-			//GL.MatrixMode(MatrixMode.Modelview);
-			//GL.PopMatrix();
+
 		}
 
 	}
