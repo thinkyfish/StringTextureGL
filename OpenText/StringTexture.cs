@@ -215,7 +215,7 @@ namespace OpenText
 		{
 			using (Graphics gfx = Graphics.FromImage(TextBitmap))
 			{
-				gfx.Clear(Color.Transparent);
+				gfx.Clear(background);
 
 				gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 

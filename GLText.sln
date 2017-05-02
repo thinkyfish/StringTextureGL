@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenText", "OpenText\OpenText.csproj", "{2E76B59D-6B23-41BB-A926-A1C3939B1182}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLText", "OpenText\GLText.csproj", "{2E76B59D-6B23-41BB-A926-A1C3939B1182}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

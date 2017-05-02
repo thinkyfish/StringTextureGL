@@ -34,7 +34,7 @@ namespace OpenText
 		public TestGameWindow() : base()
 		{
 			this.LoadFonts();
-			teststring = stb.makeString("Test", white_brush, anonymous_font);
+			teststring = stb.makeString("Test", white_brush, anonymous_font, Color.DarkGreen);
 		}
 		public void TestDraw()
 		{
