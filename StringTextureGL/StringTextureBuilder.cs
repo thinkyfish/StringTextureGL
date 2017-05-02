@@ -2,7 +2,6 @@
 //License: Public Domain
 using System;
 using System.Drawing;
-using System.Collections.Generic;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing.Imaging;
@@ -23,10 +22,10 @@ namespace StringTextureGL
 			Font f = new Font(pfc.Families[currentfont], size);
 			return f;
 		}
-		public StringTexture MakeString(String text, Brush b, Font font, Color background)
+		public StringTexture MakeString(String text, Font font,Color foreground, Color background)
 		{
 			SizeF size = GetTextSize(font, text);
-			return new StringTexture(text, b, font, size, background);
+			return new StringTexture(text, font, size, foreground, background);
 		}
 		public static SizeF GetTextSize(Font f, String text)
 		{

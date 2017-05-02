@@ -3,7 +3,6 @@
 //some code originally from http://www.opentk.com/node/1554#comment-10625
 using System;
 using System.Drawing;
-using System.Collections.Generic;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing.Imaging;
@@ -13,25 +12,26 @@ namespace StringTextureGL
 {
 	public class StringTexture
 	{
-		private int textureId = 0;
+		private int textureId;
 		public string text;
 		public readonly Bitmap TextBitmap;
 		public SizeF size;
 		private Font font;
 		private Brush brush;
 		private Color background;
-		public StringTexture(string text, Brush brush, Font font, SizeF size, Color background)
+		public StringTexture(string text, Font font, SizeF size, Color foreground, Color background)
 		{
+			this.textureId = 0;
 			this.text = text;
-			this.brush = brush;
+			this.brush = new SolidBrush(foreground);
 			this.font = font;
 			this.size = size;
 			this.background = background;
-			Size pixelsize = size.ToSize();
-			this.TextBitmap = new Bitmap(pixelsize.Width, pixelsize.Height);
+			this.TextBitmap = new Bitmap(this.Size().Width, this.Size().Height);
 			this.CreateTexture();
 			this.DrawStringToTexture();
 		}
+
 		~StringTexture()
 		{
 			if (textureId > 0)
@@ -57,7 +57,6 @@ namespace StringTextureGL
 				gfx.Clear(background);
 
 				gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-
 
 				gfx.DrawString(text, font, brush, new PointF(0.0f, 0.0f),
 									new StringFormat());
