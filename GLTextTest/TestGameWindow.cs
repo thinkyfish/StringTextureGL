@@ -1,8 +1,8 @@
-﻿using System;
+﻿//Written By thinkyfish@github
+//License: Public Domain
+using System;
 using System.Collections.Generic;
-//using System.Linq;
 using System.Text;
-//using System.Threading.Tasks;
 using OpenTK;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -29,7 +29,7 @@ namespace GLTextTest
 		public TestGameWindow() : base()
 		{
 			anonymous_font = stb.GetFont("Fonts/Anonymous Pro.ttf", 20);
-			teststring = stb.makeString("This is a test string\nLine 2 of test string", white_brush, anonymous_font, Color.DarkGreen);
+			teststring = stb.MakeString("This is a test string\nLine 2 of test string", white_brush, anonymous_font, Color.DarkGreen);
 		}
 
 		public void DrawText(int x, int y, float Depth = 1.0f)

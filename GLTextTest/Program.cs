@@ -1,4 +1,5 @@
-﻿
+﻿//Written By thinkyfish@github
+//License: Public Domain
 using System;
 using System.Drawing;
 using OpenTK;

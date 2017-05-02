@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Written By thinkyfish@github
+//License: Public Domain
+//some code originally from http://www.opentk.com/node/1554#comment-10625
+using System;
 using System.Drawing;
 using System.Collections.Generic;
 using OpenTK;

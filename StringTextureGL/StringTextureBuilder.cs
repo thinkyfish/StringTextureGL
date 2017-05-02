@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Written By thinkyfish@github
+//License: Public Domain
+using System;
 using System.Drawing;
 using System.Collections.Generic;
 using OpenTK;
@@ -21,7 +23,7 @@ namespace StringTextureGL
 			Font f = new Font(pfc.Families[currentfont], size);
 			return f;
 		}
-		public StringTexture makeString(String text, Brush b, Font font, Color background)
+		public StringTexture MakeString(String text, Brush b, Font font, Color background)
 		{
 			SizeF size = GetTextSize(font, text);
 			return new StringTexture(text, b, font, size, background);
