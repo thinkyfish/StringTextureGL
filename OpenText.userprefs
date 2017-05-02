@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{2E76B59D-6B23-41BB-A926-A1C3939B1182}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="../MasterBlaster/MasterBlaster/MasterBlaster/MBGameWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OpenText/TestGameWindow.cs">
     <Files>
-      <File FileName="OpenText/StringTexture.cs" Line="193" Column="4" />
-      <File FileName="OpenText/StringTextureBuilder.cs" Line="25" Column="4" />
-      <File FileName="OpenText/TestGameWindow.cs" Line="18" Column="6" />
+      <File FileName="OpenText/StringTexture.cs" Line="24" Column="24" />
+      <File FileName="OpenText/StringTextureBuilder.cs" Line="31" Column="4" />
+      <File FileName="OpenText/TestGameWindow.cs" Line="63" Column="26" />
       <File FileName="OpenText/Program.cs" Line="90" Column="16" />
-      <File FileName="../MasterBlaster/MasterBlaster/MasterBlaster/MBGameWindow.cs" Line="1" Column="1" />
+      <File FileName="../MasterBlaster/MasterBlaster/MasterBlaster/MBGameWindow.cs" Line="44" Column="60" />
+      <File FileName="../MasterBlaster/MasterBlaster/MasterBlaster/Label.cs" Line="23" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.OpenText PreferredExecutionTarget="MonoDevelop.Default" />

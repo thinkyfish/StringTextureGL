@@ -81,7 +81,8 @@ namespace OpenText
 
 
 					GL.Disable(EnableCap.Blend);
-
+					game.DrawText();
+					//game.TestDraw();
 					game.SwapBuffers ();
 				};
 				game.Width = 600;

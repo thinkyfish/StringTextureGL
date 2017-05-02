@@ -9,3 +9,4 @@
 /home/tristan/work/OpenText/OpenText/obj/Debug/OpenText.exe
 /home/tristan/work/OpenText/OpenText/obj/Debug/OpenText.exe.mdb
 /home/tristan/work/OpenText/OpenText/bin/Debug/Fonts/Anonymous Pro.ttf
+/home/tristan/work/OpenText/OpenText/bin/Debug/Image/test.jpg

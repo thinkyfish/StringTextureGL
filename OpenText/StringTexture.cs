@@ -179,54 +179,73 @@ namespace OpenText
 {
 	public class StringTexture
 	{
-		public int textureId = 0;
+		private int textureId = 0;
 		public string text;
 		//public enum Alignment {Left, Center, Right};
 		//private Alignment alignment;
-		private readonly Bitmap TextBitmap;
-
+		public readonly Bitmap TextBitmap;
+		public SizeF size;
 		private Font font;
 		private Brush brush;
-		public StringTexture(string text, Brush brush, SizeF size)
+		public StringTexture(string text, Brush brush, Font font, SizeF size)
 		{
+			this.text = text;
 			this.brush = brush;
+			this.font = font;
+			this.size = size;
 			Size pixelsize = size.ToSize();
 			this.TextBitmap = new Bitmap(pixelsize.Width, pixelsize.Height);
-			SetText (text);
+			this.CreateTexture();
+			this.DrawStringToTexture();
 		}
-		public void SetText(string text){
-			this.text = text;
-			Update();
-		}
-		//public void CreateTexture(){}
-
-		public void DrawStringToTexture(){
-		}
-		public void Update(){
-			SizeF textsize = GetTextSize (this.text);
-
-			if(textureId == 0)
-				textureId = CreateTexture();
-
-			DrawStringToTexture();
-		
-		}
-
-		private int CreateTexture()
+		~StringTexture()
 		{
-			int textureId;
+			if (textureId > 0)
+				GL.DeleteTexture(textureId);
+		}
+
+
+		public void DrawStringToTexture()
+		{
+			using (Graphics gfx = Graphics.FromImage(TextBitmap))
+			{
+				gfx.Clear(Color.Transparent);
+
+				gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+
+				gfx.DrawString(text, font, brush, new PointF(0.0f, 0.0f),
+									new StringFormat());
+
+			}
+
+
+
+			System.Drawing.Imaging.BitmapData data = TextBitmap.LockBits(new Rectangle(0, 0, TextBitmap.Width, TextBitmap.Height),
+			System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, TextBitmap.Width, TextBitmap.Height, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
+			TextBitmap.UnlockBits(data);
+
+		}
+		public int GetTextureId()
+		{
+			return textureId;
+		}
+
+		private void CreateTexture()
+		{
 			GL.TexEnv(TextureEnvTarget.TextureEnv, TextureEnvParameter.TextureEnvMode, (float)TextureEnvMode.Replace);//Important, or wrong color on some computers
-			Bitmap bitmap = TextBitmap;
+			//Bitmap TextBitmap = TextBitmap;
 			GL.GenTextures(1, out textureId);
 			GL.BindTexture(TextureTarget.Texture2D, textureId);
 
-			BitmapData data = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			BitmapData data = TextBitmap.LockBits(new System.Drawing.Rectangle(0, 0, TextBitmap.Width, TextBitmap.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, data.Width, data.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
 			GL.Finish();
-			bitmap.UnlockBits(data);
-			return textureId;
+			TextBitmap.UnlockBits(data);
+			//return textureId;
 		}
 	}
 }
