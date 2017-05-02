@@ -5,11 +5,13 @@ Included is a simple test program to demonstrate how to use the library.
 
 First you have to provide a font file and call 
 
-`yourfont = StringTextureBuilder.GetFont("FontName.ttf", <Fontsize>)`.
+`yourStringTextureBuilder = new StringTextureBuilder()`
+
+`yourfont = yourStringTextureBuilder.GetFont("FontName.ttf", <Fontsize>)`.
 
 Then you create the texture handler with a call to 
 
-`yourStringTexture = StringTextureBuilder.MakeString("Text Here", new SolidBrush(Color.YourForegroundColor), yourfont, Color.YourBackgroundColor)`
+`yourStringTexture = yourStringTextureBuilder.MakeString("Text Here", new SolidBrush(Color.YourForegroundColor), yourfont, Color.YourBackgroundColor)`
 
 Then you can draw the GL texture normally with the id as 
 
