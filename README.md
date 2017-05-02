@@ -13,6 +13,6 @@ Then you create the texture handler with a call to
 
 Then you can draw the GL texture normally with the id as 
 
-`yourStringTexture.TextureId`
+`yourStringTexture.TextureId()`
 
 This library *just* puts the string into a texture, it doesn't know how to draw a string. This lets the user draw in their own way, with their own methods.
