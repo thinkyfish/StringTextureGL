@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLText", "OpenText\GLText.csproj", "{2E76B59D-6B23-41BB-A926-A1C3939B1182}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLTextTest", "GLTextTest\GLTextTest.csproj", "{0FC18063-85A1-490F-9775-D2814A888993}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringTextureGL", "StringTextureGL\StringTextureGL.csproj", "{96B89360-A634-41F2-A5E5-BC6511D4C120}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,9 +11,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2E76B59D-6B23-41BB-A926-A1C3939B1182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2E76B59D-6B23-41BB-A926-A1C3939B1182}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2E76B59D-6B23-41BB-A926-A1C3939B1182}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E76B59D-6B23-41BB-A926-A1C3939B1182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FC18063-85A1-490F-9775-D2814A888993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC18063-85A1-490F-9775-D2814A888993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC18063-85A1-490F-9775-D2814A888993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC18063-85A1-490F-9775-D2814A888993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96B89360-A634-41F2-A5E5-BC6511D4C120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96B89360-A634-41F2-A5E5-BC6511D4C120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96B89360-A634-41F2-A5E5-BC6511D4C120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96B89360-A634-41F2-A5E5-BC6511D4C120}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

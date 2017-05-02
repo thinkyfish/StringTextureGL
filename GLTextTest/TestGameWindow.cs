@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using OpenTK;
 using System.Drawing;
 using System.Drawing.Imaging;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing.Text;
-
-
-namespace OpenText
+using StringTextureGL;
+namespace GLTextTest
 {
 	public enum TestMode { Menu };
 
@@ -38,7 +37,7 @@ namespace OpenText
 		}
 		public void TestDraw()
 		{
-			GL.Begin(BeginMode.Quads);
+			GL.Begin(PrimitiveType.Quads);
 			GL.Vertex2(0, 0);
 			GL.Vertex2(1.0f, 0);
 			GL.Vertex2(1, -1);
@@ -59,7 +58,7 @@ namespace OpenText
 			GL.Enable(EnableCap.Texture2D);
 			GL.BindTexture(TextureTarget.Texture2D, teststring.TextureId());
 
-			GL.Begin(BeginMode.Quads);
+			GL.Begin(PrimitiveType.Quads);
 			GL.TexCoord2(0, 0); GL.Vertex3(x + 0, y + 0, Depth);
 			GL.TexCoord2(1, 0); GL.Vertex3(x + teststring.size.Width, y + 0, Depth);
 			GL.TexCoord2(1, 1); GL.Vertex3(x + teststring.size.Width, y + teststring.size.Height, Depth);

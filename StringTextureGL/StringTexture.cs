@@ -175,7 +175,7 @@ using System.Drawing.Text;
 //	}
 //}
 
-namespace OpenText
+namespace StringTextureGL
 {
 	public class StringTexture
 	{

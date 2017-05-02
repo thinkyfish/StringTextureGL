@@ -1,19 +1,34 @@
-﻿<Properties StartupConfiguration="{2E76B59D-6B23-41BB-A926-A1C3939B1182}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="OpenText/TestGameWindow.cs">
+﻿<Properties StartupConfiguration="{0FC18063-85A1-490F-9775-D2814A888993}|Default">
+  <MonoDevelop.Ide.ItemProperties.GLTextTest PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="GLTextTest/TestGameWindow.cs">
     <Files>
-      <File FileName="OpenText/StringTexture.cs" Line="191" Column="90" />
-      <File FileName="OpenText/StringTextureBuilder.cs" Line="26" Column="41" />
-      <File FileName="OpenText/TestGameWindow.cs" Line="37" Column="75" />
-      <File FileName="OpenText/Program.cs" Line="84" Column="26" />
       <File FileName="../MasterBlaster/MasterBlaster/MasterBlaster/MBGameWindow.cs" Line="15" Column="57" />
       <File FileName="../MasterBlaster/MasterBlaster/MasterBlaster/Label.cs" Line="23" Column="31" />
+      <File FileName="GLTextTest/Program.cs" Line="3" Column="14" />
+      <File FileName="GLTextTest/TestGameWindow.cs" Line="12" Column="21" />
+      <File FileName="StringTextureGL/StringTexture.cs" Line="178" Column="26" />
+      <File FileName="StringTextureGL/StringTextureBuilder.cs" Line="8" Column="26" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GLText" expanded="True">
+            <Node name="GLTextTest" expanded="True" selected="True">
+              <Node name="References" expanded="True" />
+              <Node name="Fonts" expanded="True" />
+            </Node>
+            <Node name="StringTextureGL" expanded="True">
+              <Node name="References" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.GLText PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
 </Properties>

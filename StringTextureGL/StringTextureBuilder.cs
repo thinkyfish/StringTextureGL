@@ -5,7 +5,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
-namespace OpenText
+namespace StringTextureGL
 {
 	public class StringTextureBuilder
 	{
