@@ -13,34 +13,62 @@ namespace StringTextureGL
 	public class StringTexture
 	{
 		private int textureId;
-		public string text;
-		public readonly Bitmap TextBitmap;
-		public SizeF size;
+		private string text;
+		private readonly Bitmap TextBitmap;
+		private SizeF size;
 		private Font font;
 		private Brush brush;
 		private Color background;
-		public StringTexture(string text, Font font, SizeF size, Color foreground, Color background)
+		private static PrivateFontCollection pfc = new PrivateFontCollection();
+
+		public StringTexture(string text, Font font, Color foreground, Color background)
 		{
 			this.textureId = 0;
 			this.text = text;
 			this.brush = new SolidBrush(foreground);
 			this.font = font;
-			this.size = size;
+			this.size = GetTextSize(font, text);
 			this.background = background;
 			this.TextBitmap = new Bitmap(this.Size().Width, this.Size().Height);
 			this.CreateTexture();
 			this.DrawStringToTexture();
 		}
-
 		~StringTexture()
 		{
 			if (textureId > 0)
 				GL.DeleteTexture(textureId);
 		}
-
+		public static Font NewFont(String name, int size)
+		{
+			pfc.AddFontFile(name);
+			int fontnumber = pfc.Families.Length - 1;
+			if (fontnumber >= 0)
+			{
+				Font f = new Font(pfc.Families[fontnumber], size);
+				return f;
+			}
+			return null;
+		}
+		public static SizeF GetTextSize(Font f, String text)
+		{
+			//This resolves the catch-22 of needing the size of the bitmap
+			//when you declare the bitmap, yet needing a bitmap to measure the size.
+			Size one = new Size(1, 1);
+			Bitmap btemp = new Bitmap(one.Width, one.Height);
+			Graphics g = Graphics.FromImage(btemp);
+			return g.MeasureString(text, f);
+		}
+		public static FontFamily[] FontFamilies()
+		{
+			return pfc.Families;
+		}
 		public int TextureId()
 		{
 			return this.textureId;
+		}
+		public String Text()
+		{
+			return text;
 		}
 		public Size Size()
 		{
@@ -63,8 +91,6 @@ namespace StringTextureGL
 
 			}
 
-
-
 			System.Drawing.Imaging.BitmapData data = TextBitmap.LockBits(new Rectangle(0, 0, TextBitmap.Width, TextBitmap.Height),
 			System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 			GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, TextBitmap.Width, TextBitmap.Height, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
@@ -85,6 +111,8 @@ namespace StringTextureGL
 			GL.Finish();
 			TextBitmap.UnlockBits(data);
 		}
+
+
 	}
 }
 
