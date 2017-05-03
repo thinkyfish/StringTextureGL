@@ -13,29 +13,18 @@ Then you create the texture handler with a call to
 
 Then you can draw the GL texture normally
 
-`GL.Enable(EnableCap.Texture2D);`
-
-`GL.BindTexture(TextureTarget.Texture2D, yourStringtexture.TextureId());`
-
-`GL.Begin (PrimitiveType.Quads);`
-
-`GL.TexCoord2 (0, 0);`
-
-`GL.Vertex2 (location.X , location.Y);`
-
-`GL.TexCoord2 (1, 0);`
-
-`GL.Vertex2 (location.X + size.Width, location.Y);`
-
-`GL.TexCoord2 (1, 1);`
-
-`GL.Vertex2 (location.X + size.Width, location.Y + size.Height);`
-
-`GL.TexCoord2 (0, 1);`
-
-`GL.Vertex2 (location.X , location.Y + size.Height)`
-
-`GL.End ();`
+`GL.Enable(EnableCap.Texture2D);
+GL.BindTexture(TextureTarget.Texture2D, yourStringtexture.TextureId());
+GL.Begin (PrimitiveType.Quads);
+GL.TexCoord2 (0, 0);
+GL.Vertex2 (location.X , location.Y);
+GL.TexCoord2 (1, 0);
+GL.Vertex2 (location.X + size.Width, location.Y);
+GL.TexCoord2 (1, 1);
+GL.Vertex2 (location.X + size.Width, location.Y + size.Height);
+GL.TexCoord2 (0, 1);
+GL.Vertex2 (location.X , location.Y + size.Height)
+GL.End ();`
 
 The texture can be deleted with
 
