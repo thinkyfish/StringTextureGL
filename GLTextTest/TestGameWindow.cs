@@ -19,7 +19,7 @@ namespace GLTextTest
 
 		public bool resize = false;
 
-		public StringTextureBuilder stb = new StringTextureBuilder();
+
 		public TestMode Mode;
 		public StringTexture teststring;
 		public Font anonymous_font;
@@ -28,8 +28,8 @@ namespace GLTextTest
 
 		public TestGameWindow() : base()
 		{
-			anonymous_font = stb.GetFont("Fonts/Anonymous Pro.ttf", 20);
-			teststring = stb.MakeString("This is a test string\nLine 2 of test string", white_brush, anonymous_font, Color.DarkGreen);
+			anonymous_font = StringTexture.NewFont("Fonts/Anonymous Pro.ttf", 20);
+			teststring = new StringTexture("This is a test string\nLine 2 of test string", anonymous_font, Color.White, Color.DarkGreen);
 		}
 
 		public void DrawText(int x, int y, float Depth = 1.0f)
@@ -46,11 +46,12 @@ namespace GLTextTest
 			GL.Enable(EnableCap.Texture2D);
 			GL.BindTexture(TextureTarget.Texture2D, teststring.TextureId());
 
+			Size size = teststring.Size();
 			GL.Begin(PrimitiveType.Quads);
 			GL.TexCoord2(0, 0); GL.Vertex3(x + 0, y + 0, Depth);
-			GL.TexCoord2(1, 0); GL.Vertex3(x + teststring.size.Width, y + 0, Depth);
-			GL.TexCoord2(1, 1); GL.Vertex3(x + teststring.size.Width, y + teststring.size.Height, Depth);
-			GL.TexCoord2(0, 1); GL.Vertex3(x + 0, y + teststring.size.Height, Depth);
+			GL.TexCoord2(1, 0); GL.Vertex3(x + size.Width, y + 0, Depth);
+			GL.TexCoord2(1, 1); GL.Vertex3(x + size.Width, y + size.Height, Depth);
+			GL.TexCoord2(0, 1); GL.Vertex3(x + 0, y + size.Height, Depth);
 
 			GL.End();
 			GL.Disable(EnableCap.Texture2D);
