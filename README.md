@@ -26,7 +26,8 @@ GL.TexCoord2 (1, 1);
 GL.Vertex2 (location.X + size.Width, location.Y + size.Height);
 GL.TexCoord2 (0, 1);
 GL.Vertex2 (location.X , location.Y + size.Height)
-GL.End ();```
+GL.End ();
+```
 
 The texture can be deleted with:
 
