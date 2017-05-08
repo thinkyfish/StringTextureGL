@@ -15,8 +15,10 @@ Then you create the texture handler with a call to:
 
 Then you can draw the GL texture normally.
 
-```GL.Enable(EnableCap.Texture2D);
-GL.BindTexture(TextureTarget.Texture2D, yourStringtexture.TextureId());
+```
+Size size = yourStringTexture.Size();
+GL.Enable(EnableCap.Texture2D);
+GL.BindTexture(TextureTarget.Texture2D, yourStringTexture.TextureId());
 GL.Begin (PrimitiveType.Quads);
 GL.TexCoord2 (0, 0);
 GL.Vertex2 (location.X , location.Y);
