@@ -38,7 +38,7 @@ namespace StringTextureGL
 			if (textureId > 0)
 				GL.DeleteTexture(textureId);
 		}
-		public static Font NewFont(String filename,String familyname, int size, FontStyle style = FontStyle.Bold)
+		public static Font NewFont(String filename,String familyname, int size, FontStyle style = FontStyle.Regular)
 		{
 			pfc.AddFontFile(filename);
 			int fontnumber = pfc.Families.Length - 1;

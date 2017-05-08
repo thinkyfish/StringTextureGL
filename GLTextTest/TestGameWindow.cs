@@ -28,7 +28,7 @@ namespace GLTextTest
 
 		public TestGameWindow() : base()
 		{
-			anonymous_font = StringTexture.NewFont("Fonts/Anonymous Pro.ttf", 20);
+			anonymous_font = StringTexture.NewFont("Fonts/Anonymous Pro.ttf", "Anonymous Pro", 20, FontStyle.Bold);
 			teststring = new StringTexture("This is a test string\nLine 2 of test string", anonymous_font, Color.White, Color.DarkGreen);
 		}
 
