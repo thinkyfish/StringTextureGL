@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="GLTextTest/TestGameWindow.cs">
     <Files>
       <File FileName="GLTextTest/Program.cs" Line="2" Column="25" />
-      <File FileName="GLTextTest/TestGameWindow.cs" Line="22" Column="64" />
+      <File FileName="GLTextTest/TestGameWindow.cs" Line="50" Column="34" />
       <File FileName="StringTextureGL/StringTexture.cs" Line="48" Column="4" />
     </Files>
     <Pads>

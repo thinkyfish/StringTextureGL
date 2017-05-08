@@ -7,7 +7,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
-
+using System.Diagnostics;
 namespace StringTextureGL
 {
 	public class StringTexture
@@ -27,6 +27,7 @@ namespace StringTextureGL
 			this.text = text;
 			this.brush = new SolidBrush(foreground);
 			this.font = font;
+			//Debug.WriteLine(this.font.Name);
 			this.size = GetTextSize(font, text);
 			this.background = background;
 			this.TextBitmap = new Bitmap(this.Size().Width, this.Size().Height);
@@ -38,20 +39,28 @@ namespace StringTextureGL
 			if (textureId > 0)
 				GL.DeleteTexture(textureId);
 		}
-		public static Font NewFont(String name, int size)
+		public static Font NewFont(String filename,String familyname, int size, FontStyle style = FontStyle.Bold)
 		{
-			pfc.AddFontFile(name);
+			pfc.AddFontFile(filename);
 			int fontnumber = pfc.Families.Length - 1;
 			if (fontnumber >= 0)
 			{
-				Font f = new Font(pfc.Families[fontnumber], size);
-				return f;
+				foreach (var family in pfc.Families)
+				{
+					if (familyname.Equals(family.Name))
+					{
+						Font f = new Font(family, size, style, GraphicsUnit.Pixel);
+						return f;
+					}
+				}
+				
+
 			}
 			return null;
 		}
 		public static SizeF GetTextSize(Font f, String text)
 		{
-			//This resolves the catch-22 of needing the size of the bitmap
+			//making this static resolves the catch-22 of needing the size of the bitmap
 			//when you declare the bitmap, yet needing a bitmap to measure the size.
 			Size one = new Size(1, 1);
 			Bitmap btemp = new Bitmap(one.Width, one.Height);
@@ -85,9 +94,7 @@ namespace StringTextureGL
 				gfx.Clear(background);
 
 				gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-
-				gfx.DrawString(text, font, brush, new PointF(0.0f, 0.0f),
-									new StringFormat());
+				gfx.DrawString(text, font, brush, new PointF(0.0f, 0.0f));
 
 			}
 
