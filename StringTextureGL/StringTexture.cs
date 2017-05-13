@@ -7,7 +7,6 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
-using System.Diagnostics;
 namespace StringTextureGL
 {
 	public class StringTexture
@@ -19,6 +18,7 @@ namespace StringTextureGL
 		private Font font;
 		private Brush brush;
 		private Color background;
+		private static Bitmap tinybitmap = new Bitmap(1,1);
 		private static PrivateFontCollection pfc = new PrivateFontCollection();
 
 		public StringTexture(string text, Font font, Color foreground, Color background)
@@ -37,23 +37,18 @@ namespace StringTextureGL
 		{
 			if (textureId > 0)
 				GL.DeleteTexture(textureId);
+			this.TextBitmap.Dispose();
 		}
-		public static Font NewFont(String filename,String familyname, int size, FontStyle style = FontStyle.Regular)
+		public static Font NewFont(String filename, String familyname, int size, FontStyle style = FontStyle.Regular)
 		{
 			pfc.AddFontFile(filename);
-			int fontnumber = pfc.Families.Length - 1;
-			if (fontnumber >= 0)
+			foreach (var family in pfc.Families)
 			{
-				foreach (var family in pfc.Families)
+				if (familyname.Equals(family.Name))
 				{
-					if (familyname.Equals(family.Name))
-					{
-						Font f = new Font(family, size, style, GraphicsUnit.Pixel);
-						return f;
-					}
+					Font f = new Font(family, size, style, GraphicsUnit.Pixel);
+					return f;
 				}
-				
-
 			}
 			return null;
 		}
@@ -61,10 +56,9 @@ namespace StringTextureGL
 		{
 			//making this static resolves the catch-22 of needing the size of the bitmap
 			//when you declare the bitmap, yet needing a bitmap to measure the size.
-			Size one = new Size(1, 1);
-			Bitmap btemp = new Bitmap(one.Width, one.Height);
-			Graphics g = Graphics.FromImage(btemp);
+			Graphics g = Graphics.FromImage(tinybitmap);
 			return g.MeasureString(text, f);
+
 		}
 		public static FontFamily[] FontFamilies()
 		{
@@ -98,7 +92,7 @@ namespace StringTextureGL
 			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
 			GL.Finish();
 			TextBitmap.UnlockBits(data);
-			
+
 			using (Graphics gfx = Graphics.FromImage(TextBitmap))
 			{
 				gfx.Clear(background);
