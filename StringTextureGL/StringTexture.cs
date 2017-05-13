@@ -9,7 +9,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Text;
 namespace StringTextureGL
 {
-	public class StringTexture
+	public class StringTexture : IDisposable
 	{
 		private int textureId;
 		private string text;
@@ -33,7 +33,7 @@ namespace StringTextureGL
 			this.TextBitmap = new Bitmap(this.Size().Width, this.Size().Height);
 			this.DrawStringToTexture();
 		}
-		~StringTexture()
+		public void Dispose()
 		{
 			if (textureId > 0)
 				GL.DeleteTexture(textureId);
@@ -82,6 +82,14 @@ namespace StringTextureGL
 		}
 		public void DrawStringToTexture()
 		{
+			using (Graphics gfx = Graphics.FromImage(TextBitmap))
+			{
+				gfx.Clear(background);
+
+				gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+				gfx.DrawString(text, font, brush, new PointF(0.0f, 0.0f));
+				gfx.Dispose();
+			}
 			GL.TexEnv(TextureEnvTarget.TextureEnv, TextureEnvParameter.TextureEnvMode, (float)TextureEnvMode.Replace);//Important, or wrong color on some computers
 			GL.GenTextures(1, out textureId);
 			GL.BindTexture(TextureTarget.Texture2D, textureId);
@@ -93,19 +101,12 @@ namespace StringTextureGL
 			GL.Finish();
 			TextBitmap.UnlockBits(data);
 
-			using (Graphics gfx = Graphics.FromImage(TextBitmap))
-			{
-				gfx.Clear(background);
 
-				gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-				gfx.DrawString(text, font, brush, new PointF(0.0f, 0.0f));
+			//System.Drawing.Imaging.BitmapData bitdata = TextBitmap.LockBits(new Rectangle(0, 0, TextBitmap.Width, TextBitmap.Height),
+			//System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+			//GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, TextBitmap.Width, TextBitmap.Height, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bitdata.Scan0);
+			//TextBitmap.UnlockBits(bitdata);
 
-			}
-
-			System.Drawing.Imaging.BitmapData bitdata = TextBitmap.LockBits(new Rectangle(0, 0, TextBitmap.Width, TextBitmap.Height),
-			System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-			GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, TextBitmap.Width, TextBitmap.Height, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bitdata.Scan0);
-			TextBitmap.UnlockBits(bitdata);
 
 		}
 
